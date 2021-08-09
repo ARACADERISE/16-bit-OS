@@ -1,6 +1,6 @@
 ;org 0x7e00
 ;use16
 
-filetable: db 'TestFile,5-File,6}'
+filetable: db 'Terminal,06}'
 
 times 512 - ($ - $$) db 0

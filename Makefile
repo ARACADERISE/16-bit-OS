@@ -7,8 +7,8 @@
 run_bochs: clean __bin __merge
 	bochs
 run_qemu: clean __bin __merge
-	qemu-system-i386 -drive format=raw,file=bin/OS.bin,if=ide,index=0,media=disk
-
+	#qemu-system-i386 -drive format=raw,file=bin/OS.bin,if=ide,index=0,media=disk
+	qemu-system-i386 -fda bin/OS.bin
 ASMDIR = asm
 BINDIR = bin
 

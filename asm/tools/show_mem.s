@@ -1,4 +1,5 @@
 show:
+    pusha
     mov si, INFO
     call print_str
     
@@ -61,6 +62,7 @@ show:
     call print_str
     call print_hex
     
+    popa
     ret
 
 INFO: db 0xa, 0xd, '  REG         VAL', \
