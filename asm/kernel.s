@@ -1,7 +1,6 @@
 use16
 org 0x8000
 
-
 mov ah, 0x00
 mov al, 0x03
 int 0x10
@@ -59,8 +58,8 @@ filemenu:
     
     mov si, FILE_MENU
     call print_str
-    
-    mov si, 0x7E00
+   
+    mov si, 0x5000
 .print_loop:
     mov al, [si]
     
@@ -71,6 +70,7 @@ filemenu:
     cmp al, ','
     je .sector_number
     
+    mov ah, 0x0e
     int 0x10
     inc si
     
@@ -134,7 +134,7 @@ run_it:
     mov byte [di], 0x0
     mov di, [string]
     
-    mov si, 0x7E00
+    mov si, 0x5000
 check_loop:
     cmp cx, 0
     je end_it
@@ -195,10 +195,10 @@ load_program:
     xor bx, bx
     
     mov ah, 0x02
-    mov al, 0x01
+    mov al, 0x02
     mov ch, 0x00
     mov dh, 0x00
-    mov dl, 0x00
+    mov dl, 0x80
     int 0x13
     jc end_all
     
@@ -306,7 +306,7 @@ print_str:
 include "tools/hex_print.s"
 include "tools/show_mem.s"
 
-disk_info: db 0x00, 0x01, 0x03, 0x02
+;disk_info: db 0x00, 0x01, 0x03, 0x02
 
 string: db ''
 TAB: db '    ', 0x0
